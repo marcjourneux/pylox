@@ -1,0 +1,18 @@
+var a = 0;
+var b = 1;
+
+while (a < 1000) {
+  print a;
+  var temp = a;
+  a = b;
+  b = temp + b;
+  if (a>200) 
+  {
+      break;
+  }
+}
+
+for (var i=0;i<20; i=i+1) {
+  if (i>5) break;
+  print i;
+}

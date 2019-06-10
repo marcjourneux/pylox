@@ -1,0 +1,14 @@
+fun multiple_exit(option) {
+  if (option == 1)
+    return "option 1";
+  if (option ==2)
+    return "option 2";
+  return "other option";
+}
+
+var a=1;
+print multiple_exit(1);
+print multiple_exit(3);
+
+
+

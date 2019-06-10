@@ -1,0 +1,14 @@
+* Lox compiler in Python
+It is not delivered as a complete package to let you play with it as you like. 
+
+** Requirements
+The code uses Python 3.6.
+
+** How to run the lox compiler
+1. You can run the REPL with "python3 -m lox.loxcompile" once you are in the loxcompiler folder (top folder).
+2. You can run any test file (extension does not matter) as "python3 -m test.test_lox $file", placing the file in "test" folder.
+
+** What is implemented on top of the book
+1. 'break' statement is implemented.
+2. Closures are implemented.
+3. Lambdas are implemented (lambdas are supposed to be anonymous function here).

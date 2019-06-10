@@ -1,0 +1,13 @@
+class Thing {
+  getCallback() {
+    fun localFunction() {
+      print this.test;
+    }
+
+    return localFunction;
+  }
+}
+var th = Thing();
+th.test = "toto";
+var callback = Thing().getCallback();
+callback();

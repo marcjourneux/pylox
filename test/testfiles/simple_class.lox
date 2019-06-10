@@ -1,0 +1,7 @@
+class Clafoutis {
+
+    BuildWith() {
+        return "cerises";
+    }
+}
+print Clafoutis;

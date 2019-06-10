@@ -1,0 +1,11 @@
+class Car {
+    drive () {
+        print this.name + " vrooom";
+    }
+}
+
+var mycar = Car();
+mycar.name = "toto";
+print mycar.name;
+var fn = mycar.drive;
+fn();

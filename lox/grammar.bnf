@@ -1,0 +1,63 @@
+# Definition of the statement grammar
+# short description of the Backus Naur Form notation:
+# ::= means "is defined as"
+# | means "or"
+# nonterminal means that nonterminal is a non terminal category
+# terminal category are not bracketed
+# ? means that the group or symbol are optional and can be used one time max
+# * means that the group or symbol are optional and can appear multiple times
+# + means that the group or symbol should be found at least once
+# - means an exception to the rule
+# 
+# Following is an example from Wickipedia (https://en.wikipedia.org/wiki/Backus–Naur_form)
+# for a postal address (not everything is specified):
+#  postal-address ::= name-part street-address zip-part
+#       name-part ::= personal-part last-name opt-suffix-part EOL 
+#                     | personal-part name-part
+#   personal-part ::= initial "." | first-name
+#  street-address ::= house-num street-name opt-apt-num EOL
+#        zip-part ::= town-name "," state-code ZIP-code EOL
+# opt-suffix-part ::= "Sr." | "Jr." | roman-numeral | ""
+#     opt-apt-num ::= apt-num | ""
+#
+# Grammar rules for Lox
+# There is mainly expression and statements.
+# Statements are units of the program like a line ending with a semicolon, a block, or an if
+program        ::= declaration* EOF 
+declaration    ::= var_decl | function_decl | class_decl | stmt 
+var_decl       ::= "var" identifier = expression ";"
+function_decl  ::= "fun" function
+class_decl     ::= "class" IDENTIFIER ( "<" IDENTIFIER )? {" function* "}"
+stmt           ::= if_stmt | expr_stmt | print_stmt | while_stmt | for_stmt | block | 
+                   break_stmt | return_stmt
+if_stmt        ::= "if" "(" expression ")" stmt ("else" stmt)?
+break_stmt     ::= "break" ";" 
+for_stmt       ::= "for" "(" (var_decl | expr_stmt | ";" ) expression? ";" expression? ")" stmt 
+while_stmt     ::= "while" "(" expression ")" stmt
+return_stmt    ::= "return" expression? ";"
+block          ::= "{" declaration* "}"
+print_stmt     ::= "print" expression ";" 
+
+function       ::= IDENTIFIER "(" parameters? ")" block
+parameters     ::= IDENTIFIER ("," IDENTIFIER)*
+arguments      ::= expression ("," expression)*
+
+expression     ::= assignement
+assignment     ::= (call ".")? IDENTIFIER "=" assignment | logic_or
+
+logic_or       ::= logic_and ("or" logic_and)*
+logic_and      ::= equality ("and" equality)*
+equality       ::= comparison (("==" | "!=") comparison)*
+comparison     ::= addition (("<" | "<=" | ">" | ">=") addition)*
+addition       ::= multiplication ( ( "-" | "+" ) multiplication )* 
+multiplication ::= unary ( ( "/" | "*" ) unary )* 
+
+unary          ::= ("!" | "-") unary | call
+call           ::= primary  ("(" arguments? ")" | "." IDENTIFIER )*
+primary        ::= IDENTIFIER | NUMBER | STRING | "true" | "false" | "nil" | "this" | "super" | "(" expression ")"
+
+NUMBER         ::= DIGIT+ ( "." DIGIT+ )? 
+STRING         ::= '"' <any char except '"'>* '"' 
+IDENTIFIER     ::= ALPHA ( ALPHA | DIGIT )* 
+ALPHA          ::= 'a' ... 'z' | 'A' ... 'Z' | '_' 
+DIGIT          ::= '0' ... '9' 
