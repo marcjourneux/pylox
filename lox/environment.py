@@ -3,6 +3,8 @@ from lox.token import LoxToken
 
 
 class Environment:
+    """Managing scopes working with interpreter."""
+
     def __init__(self, enclosing_env=None):
         self.__varmap = {}
         self.enclosing = enclosing_env

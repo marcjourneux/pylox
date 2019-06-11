@@ -1,8 +1,6 @@
-# Visitor helper functions
 #
-# Using decorator for visitor
-
-# A couple helper functions first
+#  Visitor helper functions to mimic interface implementation
+#
 
 
 def _qualname(obj):
@@ -39,8 +37,9 @@ def _visitor_impl(self, arg):
             raise ValueError("No visitor is implementing visit method for {0}, {1}".format(
                 type(self), type(arg)))
     return method(self, arg)
-
+#
 # The actual @visitor decorator
+#
 
 
 def visitor(arg_type):

@@ -6,6 +6,7 @@ from typing import List
 
 
 class Visitor:
+    """Visitor class for Expr and Stmt, all visitors must inherit from this one."""
 
     @visitor(Assign)
     def visit(self, assign):

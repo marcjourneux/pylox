@@ -1,14 +1,13 @@
-# Scanner
+#
+# Scanner for the lox compiler
 #
 from lox.tokentype import TokensDic
 from lox.token import LoxToken
-# LoxToken are a list of dictionary with key: type, lexeme, literal, line
+from lox.error import LoxError
 
 
 def is_at_end(source, positions):
     return positions['current'] >= len(source)
-
-# move in the string
 
 
 def advance(source, positions):
@@ -26,6 +25,7 @@ def advance_eol(source, positions):
 
 
 def peek(source, positions):
+    """Return the current char without moving forward."""
     if positions['current'] >= len(source):
         return ""
     else:
@@ -33,6 +33,7 @@ def peek(source, positions):
 
 
 def peek_next(source, positions):
+    """Return the next char without moving forward."""
     if positions['current']+1 >= len(source):
         return ""
     else:
@@ -40,14 +41,15 @@ def peek_next(source, positions):
 
 
 def string(source, positions):
+    """Scan strings."""
     while not is_at_end(source, positions) and peek(source, positions) != '"':
         if peek(source, positions) == '\n':
             positions['line'] += 1
         advance(source, positions)
     if is_at_end(source, positions):
-        # log error
+        LoxError.error(positions['line'], "String is not ended with quotes.")
         return None
-    # Closing "
+    # Closing quote
     else:
         advance(source, positions)
         # return string without quotes
@@ -63,6 +65,7 @@ def is_digit(c):
 
 
 def number(source, positions):
+    """Scan numbers."""
     while is_digit(peek(source, positions)):
         advance(source, positions)
 
@@ -87,15 +90,16 @@ def is_alphanum(c):
 
 
 def identifier(source, positions):
+    """Scan identifiers: they should starts with a letter and contains alphanum and underscore."""
     while is_alphanum(peek(source, positions)):
         advance(source, positions)
     return source[positions['start']:positions['current']]
 
 
 def scan_token(source, positions, tokens, errors):
+    """Main method to scan token."""
     positions['start'] = positions['current']
     c = advance(source, positions)
-    #print("current char: {}".format(c))
     #
     # Single character loxtoken
     if c in TokensDic.singlechartoken:

@@ -1,5 +1,7 @@
-# Definition of the LoxToken class
+
 class LoxToken:
+    """LoxToken class"""
+
     def __init__(self, type, lexeme, literal, line):
         self.type = type
         self.lexeme = lexeme

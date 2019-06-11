@@ -12,6 +12,8 @@ from lox.functiontypes import FunctionType
 
 
 class LoxCallable:
+    """Superclass for runtime of callable objects."""
+
     def call(self, interpreter, arguments: List[object]):
         pass
 
@@ -20,6 +22,8 @@ class LoxCallable:
 
 
 class LoxFunction(LoxCallable):
+    """Runtime for function."""
+
     def __init__(self, name: "LoxToken", fundec: FunctionExp, closure):
         self.name = name
         self.fundec = fundec
