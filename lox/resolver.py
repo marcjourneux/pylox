@@ -41,7 +41,6 @@ class Resolver(Visitor):
         i = 0
         for scope in reversed(self.scopes):
             if name.lexeme in scope:
-                print("setting local of " + name.lexeme + " to " + str(i))
                 self.interpreter.resolve(expr, i)
                 return
             i += 1

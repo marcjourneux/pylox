@@ -1,14 +1,15 @@
 * Lox compiler in Python
+This Lox compiler is an implementation of the book [[https://github.com/munificent/craftinginterpreters]["Crafting Interpreters"]] from [[https://github.com/munificent][Bob Nystrom]].
 It is not delivered as a complete package to let you play with it as you like. 
 
 ** Requirements
-The code uses Python 3.6.
+The code uses Python 3.6 and was developed on OS X. It should work quite easily on Windows.
 
 ** How to run the lox compiler
-1. You can run the REPL with "python3 -m lox.loxcompile" once you are in the loxcompiler folder (top folder).
-2. You can run any test file (extension does not matter) as "python3 -m test.test_lox $file", placing the file in "test" folder.
+1. You can run the REPL with "python3 -m lox.lox" once you are in the pylox folder (top folder). You can exit the REPL with 'exit'.
+2. You can run any test file (extension does not matter) as "python3 -m test.test_lox testfiles/$file", placing the file in "test/testfiles" folder.
 
-** What is implemented on top of the book
+** What is implemented on top of the book (in the /*Challenges*/ section)
 1. 'break' statement is implemented.
 2. Closures are implemented.
 3. Lambdas are implemented (lambdas are supposed to be anonymous function here).

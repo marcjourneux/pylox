@@ -46,15 +46,15 @@ class Lox:
         # print("Tokens:\n")
         # for t in tokens:
         #     print(t)
-        print("Lox: ready to parse")
+        #print("Lox: ready to parse")
         statements = parser.parse()
-        print("Lox: ready to resolve")
+        #print("Lox: ready to resolve")
         resolver = Resolver(self.interpreter)
         resolver.resolvelist(statements)
         if LoxError.haderror:
             print("Syntax errors detected during compilation")
             return
-        print("Lox: ready to interpret")
+        #print("Lox: ready to interpret")
         self.interpreter.interpret(statements)
 
 

@@ -306,9 +306,9 @@ class Interpreter(Visitor):
             astprinter = PrinterVisitor()
             for statement in statements:
                 if statement is not None:
-                    print(astprinter.print(statement))
+                    # print(astprinter.print(statement))
                     self.execute(statement)
                 else:
-                    print("None stamement, error detected.")
+                    print("None statement, error detected.")
         except InterpreterError as error:
             print("error: ", error)
