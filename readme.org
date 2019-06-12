@@ -9,7 +9,7 @@ The code uses Python 3.6 and was developed on OS X. It should work quite easily 
 1. You can run the REPL with "python3 -m lox.lox" once you are in the pylox folder (top folder). You can exit the REPL with 'exit'.
 2. You can run any test file (extension does not matter) as "python3 -m test.test_lox testfiles/$file", placing the file in "test/testfiles" folder.
 
-** What is implemented on top of the book (in the /*Challenges*/ section)
+** What is implemented on top of the book (in the /Challenges/ section)
 1. 'break' statement is implemented.
 2. Closures are implemented.
 3. Lambdas are implemented (lambdas are supposed to be anonymous function here).
